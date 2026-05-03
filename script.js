@@ -34,8 +34,7 @@ async function sendMessage() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
     // 🔑 Deinen Gemini API-Key hier eintragen (kostenlos auf aistudio.google.com)
-    const API_KEY = "AIzaSyC8VZBigXdc7sDY-6DAc0MGDnuSciy7_xI";
-    const URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+    const URL = `https://aabp.kajurieh.workers.dev`/;
 
     const systemInstruction = `Du bist der offizielle Guide der Aalen Block Party 2026 – ein Festival in Aalen, Deutschland.
 Dein Ton ist cool, authentisch und nutzt lockeren Festival- und Rap-Slang auf Deutsch (z.B. "safe", "Vibe", "Bro", "krass", "fett").
