@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Merch – Aalen Block Party</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .merch-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(140,0,255,0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--purple-light);
+      box-shadow: 0 16px 50px rgba(140,0,255,0.2);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, #1a0030, #0d0010);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-size: 5rem;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .product-card:hover .product-image img { transform: scale(1.05); }
+
+    .product-info {
+      padding: 1.2rem 1.5rem;
+      flex: 1;
+    }
+
+    .product-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .product-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+    }
+
+    .add-to-cart {
+      background: var(--yellow);
+      color: #000;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      width: 100%;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+    .add-to-cart:hover { background: var(--white); }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #cc0000;
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      text-transform: uppercase;
+      z-index: 10;
+    }
+
+    .badge.new { background: var(--purple-main); }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <a href="neu.html" class="nav-logo">
+    <img src="AABP.png" alt="Aalen Block Party" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="neu.html">LINEUP</a></li>
+    <li><a href="tickets.html">TICKETS</a></li>
+    <li><a href="travel.html">TRAVEL</a></li>
+    <li><a href="merch.html" class="active">MERCH</a></li>
+    <li><a href="faq.html">INFO</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</header>
+
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 23 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ JETZT EXKLUSIVPASS SICHERN</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 23 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ JETZT EXKLUSIVPASS SICHERN</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>OFFICIAL MERCH</h1>
+</div>
+
+<div class="merch-container">
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="badge">LIMITIERT</div>
+      <div class="product-image">
+        <img src="merch-shirt.jpg" alt="Festival Shirt" onerror="this.parentElement.innerHTML='👕'"/>
+      </div>
+      <div class="product-info">
+        <div class="product-title">FESTIVAL SHIRT 2026</div>
+        <div class="product-price">29,99 €</div>
+      </div>
+      <button class="add-to-cart">In den Warenkorb</button>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="merch-hoodie.jpg" alt="Hoodie" onerror="this.parentElement.innerHTML='🧥'"/>
+      </div>
+      <div class="product-info">
+        <div class="product-title">BLOCK PARTY HOODIE</div>
+        <div class="product-price">49,99 €</div>
+      </div>
+      <button class="add-to-cart">In den Warenkorb</button>
+    </div>
+
+    <div class="product-card">
+      <div class="badge new">NEU</div>
+      <div class="product-image">
+        <img src="merch-cap.jpg" alt="Cap" onerror="this.parentElement.innerHTML='🧢'"/>
+      </div>
+      <div class="product-info">
+        <div class="product-title">TRUCKER CAP GELB</div>
+        <div class="product-price">19,99 €</div>
+      </div>
+      <button class="add-to-cart">In den Warenkorb</button>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">🎽</div>
+      <div class="product-info">
+        <div class="product-title">BLOCK PARTY TOTE BAG</div>
+        <div class="product-price">14,99 €</div>
+      </div>
+      <button class="add-to-cart">In den Warenkorb</button>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <nav>
+    <ul class="social-container">
+      <li><a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a></li>
+      <li><a href="#" class="social-icon"><i class="fa-brands fa-tiktok"></i></a></li>
+      <li><a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+      <li><a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a></li>
+    </ul>
+  </nav>
+  <hr class="footer-divider"/>
+  <div class="footer-legal">
+    <div class="legal-links">
+      <a href="impressum.html">IMPRESSUM</a>
+      <a href="datenschutz.html">DATENSCHUTZ</a>
+      <a href="agb.html">AGB</a>
+      <a href="kontakt.html">KONTAKT</a>
+    </div>
+    <p class="copyright">© 2026 AALEN BLOCK PARTY. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+
+<button class="ai-chat-launcher" id="chatLauncher"><i class="fa-solid fa-robot"></i></button>
+<div class="ai-chat-window" id="chatWindow">
+  <div class="chat-header"><span>BLOCK PARTY AI</span><button id="closeChat">&times;</button></div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="message bot">Moin! Ich bin dein Block Party Guide. Wie kann ich dir helfen? 🎧</div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="userInput" placeholder="Schreib etwas..."/>
+    <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('hamburger').onclick = function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+    this.classList.toggle('active');
+  };
+</script>
+</body>
+</html>

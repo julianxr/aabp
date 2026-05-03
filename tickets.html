@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tickets – Aalen Block Party</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .tickets-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ticket-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0;
+    }
+
+    .ticket-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(140,0,255,0.2);
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ticket-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--purple-main);
+      transition: background 0.3s;
+    }
+
+    .ticket-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--purple-light);
+      box-shadow: 0 16px 50px rgba(140,0,255,0.2);
+    }
+
+    .ticket-card:hover::before { background: var(--yellow); }
+
+    .ticket-card.featured {
+      border-color: var(--purple-light);
+      background: rgba(140,0,255,0.06);
+    }
+
+    .ticket-card.featured::before { background: var(--yellow); }
+
+    .sold-out-badge {
+      display: inline-block;
+      background: #cc0000;
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      transform: rotate(-4deg);
+      margin-bottom: 1rem;
+    }
+
+    .ticket-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .ticket-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 3.5rem;
+      color: var(--yellow);
+      line-height: 1;
+      margin: 1rem 0;
+    }
+
+    .details {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+      line-height: 2;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .details li::before {
+      content: "✓ ";
+      color: var(--purple-light);
+    }
+
+    .ticket-card.sold-out {
+      opacity: 0.5;
+      filter: grayscale(0.6);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <a href="neu.html" class="nav-logo">
+    <img src="AABP.png" alt="Aalen Block Party" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="neu.html">LINEUP</a></li>
+    <li><a href="tickets.html" class="active">TICKETS</a></li>
+    <li><a href="travel.html">TRAVEL</a></li>
+    <li><a href="merch.html">MERCH</a></li>
+    <li><a href="faq.html">INFO</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</header>
+
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 23 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ JETZT EXKLUSIVPASS SICHERN</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 23 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ JETZT EXKLUSIVPASS SICHERN</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>WÄHLE DEIN TICKET</h1>
+</div>
+
+<section class="tickets-section">
+  <div class="ticket-grid">
+
+    <div class="ticket-card sold-out">
+      <div>
+        <div class="sold-out-badge">AUSVERKAUFT</div>
+        <div class="ticket-name">EARLY BIRD</div>
+        <div class="ticket-price">29€</div>
+        <ul class="details">
+          <li>Günstigster Preis</li>
+          <li>Einlass ab 18:00 Uhr</li>
+          <li>Limitiert auf 100 Stück</li>
+        </ul>
+      </div>
+      <a href="#" class="btn-primary">SOLD OUT</a>
+    </div>
+
+    <div class="ticket-card featured">
+      <div>
+        <div class="ticket-name">STANDARD PASS</div>
+        <div class="ticket-price">45€</div>
+        <ul class="details">
+          <li>Regulärer Einlass</li>
+          <li>Alle Stages inkludiert</li>
+          <li>Free Welcome Drink</li>
+        </ul>
+      </div>
+      <a href="#" class="btn-primary">JETZT KAUFEN</a>
+    </div>
+
+    <div class="ticket-card">
+      <div>
+        <div class="ticket-name">VIP EXKLUSIV</div>
+        <div class="ticket-price">99€</div>
+        <ul class="details">
+          <li>Fast Lane Einlass</li>
+          <li>Eigener VIP Bereich</li>
+          <li>Flatrate Softdrinks & Bier</li>
+          <li>Treffen mit Künstlern</li>
+        </ul>
+      </div>
+      <a href="#" class="btn-primary">VIP SICHERN</a>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <nav>
+    <ul class="social-container">
+      <li><a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a></li>
+      <li><a href="#" class="social-icon"><i class="fa-brands fa-tiktok"></i></a></li>
+      <li><a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a></li>
+      <li><a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a></li>
+    </ul>
+  </nav>
+  <hr class="footer-divider"/>
+  <div class="footer-legal">
+    <div class="legal-links">
+      <a href="impressum.html">IMPRESSUM</a>
+      <a href="datenschutz.html">DATENSCHUTZ</a>
+      <a href="agb.html">AGB</a>
+      <a href="kontakt.html">KONTAKT</a>
+    </div>
+    <p class="copyright">© 2026 AALEN BLOCK PARTY. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+
+<button class="ai-chat-launcher" id="chatLauncher"><i class="fa-solid fa-robot"></i></button>
+<div class="ai-chat-window" id="chatWindow">
+  <div class="chat-header"><span>BLOCK PARTY AI</span><button id="closeChat">&times;</button></div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="message bot">Moin! Ich bin dein Block Party Guide. Wie kann ich dir helfen? 🎧</div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="userInput" placeholder="Schreib etwas..."/>
+    <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('hamburger').onclick = function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+    this.classList.toggle('active');
+  };
+</script>
+</body>
+</html>

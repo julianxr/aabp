@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aalen Block Party 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    /* ── HERO ── */
+    .hero {
+      padding: 2rem;
+      background: var(--dark2);
+    }
+
+    .hero-wrapper {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0d0010;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 60% 35%, rgba(100,0,160,0.55) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 25% 25%, rgba(60,0,100,0.4) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 30% at 50% 100%, rgba(0,0,0,0.9) 0%, transparent 60%),
+        linear-gradient(135deg, #0d0010 0%, #1a0030 50%, #0a000a 100%);
+    }
+
+    .hero-crowd {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, #000 0%, transparent 100%);
+    }
+
+    /* video support */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 3rem 2rem;
+      z-index: 2;
+    }
+
+    .hero-logo-img {
+      width: min(380px, 80vw);
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 40px rgba(140,0,255,0.4));
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 5vw, 3rem);
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 30px rgba(140,0,255,0.6);
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+      color: var(--purple-light);
+      margin-top: 1rem;
+      letter-spacing: 0.08em;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-ticket-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 3;
+      background: var(--yellow);
+      color: #000;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      padding: 0.8rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transform: rotate(-2deg);
+      box-shadow: 4px 4px 0 #000;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-ticket-btn:hover {
+      transform: rotate(0deg) scale(1.04);
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    /* ── LINEUP ── */
+    .lineup-section {
+      background: var(--purple-dark);
+      padding: 5rem 2rem;
+    }
+
+    .lineup-section .section-title {
+      color: var(--yellow);
+    }
+
+    .lineup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .artist-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(140,0,255,0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .artist-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--purple-light);
+      box-shadow: 0 12px 40px rgba(140,0,255,0.25);
+    }
+
+    .artist-img-placeholder {
+      width: 100%;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      background: linear-gradient(135deg, #1a0030, #0d0010);
+    }
+
+    .artist-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.3s;
+    }
+    .artist-card:hover .artist-img { filter: grayscale(0%); }
+
+    .diamond-icon {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 20px;
+      height: 20px;
+      background: var(--purple-main);
+      transform: rotate(45deg);
+    }
+
+    .card-info {
+      padding: 1rem 1.2rem 1.2rem;
+    }
+
+    .card-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.3rem;
+      font-size: 0.83rem;
+      color: var(--purple-light);
+      font-weight: 600;
+    }
+
+    /* ── PARTNERS ── */
+    .partners {
+      background: var(--dark);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(140,0,255,0.15);
+    }
+
+    .partner-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      opacity: 0.5;
+      filter: grayscale(1);
+      transition: opacity 0.3s;
+    }
+    .partner-list:hover { opacity: 0.8; filter: grayscale(0); }
+
+    .partner-logo {
+      height: 50px;
+      object-fit: contain;
+    }
+
+    /* ── INFO CARDS ── */
+    .info-section {
+      background: var(--dark2);
+      padding: 5rem 2rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(140,0,255,0.2);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .info-card:hover {
+      border-color: var(--purple-light);
+      box-shadow: 0 0 30px rgba(140,0,255,0.15);
+    }
+
+    .info-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: var(--white);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <a href="neu.html" class="nav-logo">
+    <img src="AABP.png" alt="Aalen Block Party" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="neu.html" class="active">LINEUP</a></li>
+    <li><a href="tickets.html">TICKETS</a></li>
+    <li><a href="travel.html">TRAVEL</a></li>
+    <li><a href="merch.html">MERCH</a></li>
+    <li><a href="faq.html">INFO</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 23 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ JETZT EXKLUSIVPASS SICHERN</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ NOCH 23 TICKETS FÜR XX.XX.2026</span>
+    <span>\\\ JETZT EXKLUSIVPASS SICHERN</span>
+    <span>\\\ NOCH 12 TICKETS FÜR XX.XX.2026</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-wrapper">
+    <div class="hero-bg"></div>
+    <div class="hero-crowd"></div>
+    <!-- Falls du ein Video hast: -->
+    <!-- <video class="hero-video" autoplay loop muted playsinline><source src="vid.mp4" type="video/mp4"></video> -->
+    <div class="hero-content">
+      <img src="AABP.png" alt="Aalen Block Party" class="hero-logo-img"/>
+      <div class="hero-date">XX. – XX. AUGUST 2026 • AALEN</div>
+    </div>
+    <a href="tickets.html" class="hero-ticket-btn">HIER GIBTS TICKETS!</a>
+  </div>
+</section>
+
+<!-- LINEUP -->
+<section class="lineup-section" id="lineup">
+  <h2 class="section-title">LINEUP 2026</h2>
+  <div class="lineup-grid">
+
+    <div class="artist-card">
+      <div class="diamond-icon"></div>
+      <div class="artist-img-placeholder">🎤</div>
+      <div class="card-info">
+        <div class="card-name">ARTIST NAME</div>
+        <div class="card-meta"><span>XX.XX – 00:00</span><span>MAIN STAGE</span></div>
+      </div>
+    </div>
+
+    <div class="artist-card">
+      <div class="diamond-icon"></div>
+      <div class="artist-img-placeholder">🎛️</div>
+      <div class="card-info">
+        <div class="card-name">ARTIST NAME</div>
+        <div class="card-meta"><span>XX.XX – 00:00</span><span>MAIN STAGE</span></div>
+      </div>
+    </div>
+
+    <div class="artist-card">
+      <div class="diamond-icon"></div>
+      <div class="artist-img-placeholder">🎶</div>
+      <div class="card-info">
+        <div class="card-name">ARTIST NAME</div>
+        <div class="card-meta"><span>XX.XX – 00:00</span><span>SECOND STAGE</span></div>
+      </div>
+    </div>
+
+    <div class="artist-card">
+      <div class="diamond-icon"></div>
+      <div class="artist-img-placeholder">🎸</div>
+      <div class="card-info">
+        <div class="card-name">ARTIST NAME</div>
+        <div class="card-meta"><span>XX.XX – 00:00</span><span>MAIN STAGE</span></div>
+      </div>
+    </div>
+
+    <div class="artist-card">
+      <div class="diamond-icon"></div>
+      <div class="artist-img-placeholder">🎵</div>
+      <div class="card-info">
+        <div class="card-name">ARTIST NAME</div>
+        <div class="card-meta"><span>XX.XX – 00:00</span><span>SECOND STAGE</span></div>
+      </div>
+    </div>
+
+    <div class="artist-card">
+      <div class="diamond-icon"></div>
+      <div class="artist-img-placeholder">🎧</div>
+      <div class="card-info">
+        <div class="card-name">ARTIST NAME</div>
+        <div class="card-meta"><span>XX.XX – 00:00</span><span>MAIN STAGE</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INFO CARDS -->
+<section class="info-section" id="info">
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-label">DATUM</div>
+      <div class="info-value">XX. – XX. AUGUST 2026</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">LOCATION</div>
+      <div class="info-value">FESTIVAL GROUNDS</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">TICKETS</div>
+      <div class="info-value">AB 29€</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners">
+  <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;">POWERED BY</p>
+  <div class="partner-list">
+    <img src="cj.png" alt="Cactus Jack" class="partner-logo" onerror="this.style.display='none'">
+    <img src="stussy.png" alt="Stussy" class="partner-logo" onerror="this.style.display='none'">
+    <img src="three.png" alt="Three-Sixty" class="partner-logo" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <nav>
+    <ul class="social-container">
+      <li><a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+      <li><a href="#" class="social-icon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></li>
+      <li><a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+      <li><a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></li>
+    </ul>
+  </nav>
+  <hr class="footer-divider"/>
+  <div class="footer-legal">
+    <div class="legal-links">
+      <a href="impressum.html">IMPRESSUM</a>
+      <a href="datenschutz.html">DATENSCHUTZ</a>
+      <a href="agb.html">AGB</a>
+      <a href="kontakt.html">KONTAKT</a>
+    </div>
+    <p class="copyright">© 2026 AALEN BLOCK PARTY. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+
+<!-- AI CHAT -->
+<button class="ai-chat-launcher" id="chatLauncher" aria-label="KI Assistent öffnen">
+  <i class="fa-solid fa-robot"></i>
+</button>
+
+<div class="ai-chat-window" id="chatWindow">
+  <div class="chat-header">
+    <span>BLOCK PARTY AI</span>
+    <button id="closeChat">&times;</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="message bot">Moin! Ich bin dein Block Party Guide. Wie kann ich dir helfen? 🎧</div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" id="userInput" placeholder="Schreib etwas..."/>
+    <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  hamburger.onclick = () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active');
+  };
+</script>
+</body>
+</html>
